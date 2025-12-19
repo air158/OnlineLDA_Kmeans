@@ -1,0 +1,142 @@
+文本挖掘与聚类分析项目 - 文件结构
+================================================================================
+
+项目目录结构：
+algo/
+├── README.md                          # 完整技术文档（主文档）
+├── PROJECT_STRUCTURE.txt              # 本文件 - 项目结构说明
+├── requirements.txt                   # Python依赖包列表
+│
+├── 数据文件/
+│   ├── cn_bow.csv                    # 原始词袋向量数据（5,219文档）
+│   └── clustering_labels.csv         # 带聚类标签的完整数据
+│
+├── 脚本文件/
+│   ├── olda_perplexity_analysis.py   # 【主脚本1】在线LDA困惑度分析
+│   ├── text_clustering_comparison.py # 【主脚本2】KMeans vs Single-pass对比
+│   ├── lda_perplexity_analysis.py    # LDA标准版（已被OLDA替代）
+│   └── lda_perplexity_fast.py        # LDA快速版（已废弃）
+│
+├── 实验一结果（LDA主题模型）/
+│   ├── olda_perplexity_analysis.png  # 困惑度曲线图
+│   └── olda_perplexity_results.csv   # 详细数据（主题数 vs 困惑度）
+│
+├── 实验二结果（聚类对比）/
+│   ├── clustering_comparison.png      # 9宫格对比图表
+│   ├── kmeans_results.csv            # KMeans各K值的评估结果
+│   ├── singlepass_results.csv        # Single-pass各阈值的评估结果
+│   └── clustering_summary.txt        # 对比分析文字总结
+│
+└── 环境配置/
+    ├── venv/                         # Python虚拟环境
+    └── .claude/                      # Claude配置文件
+
+================================================================================
+
+核心文件说明：
+
+【必读文档】
+★ README.md (24KB, 921行)
+  - 项目完整技术文档
+  - 包含所有实验方法、结果和分析
+  - 运行指南和代码示例
+
+【主要脚本】
+★ olda_perplexity_analysis.py
+  - 在线LDA主题建模
+  - 生成困惑度与主题数的关系图
+  - 推荐配置：4个主题
+  - 运行时间：~85秒
+
+★ text_clustering_comparison.py
+  - KMeans与Single-pass对比分析
+  - 生成9宫格综合对比图
+  - 结论：KMeans (K=3) 优于Single-pass
+  - 运行时间：~120秒
+
+【关键结果】
+★ olda_perplexity_analysis.png
+  - LDA困惑度双曲线图
+  - 显示最优主题数为4
+
+★ clustering_comparison.png
+  - 聚类算法9宫格对比图
+  - 显示KMeans全面优于Single-pass
+
+================================================================================
+
+快速开始：
+
+1. 环境配置
+   cd /path/to/algo
+   python3 -m venv venv
+   source venv/bin/activate
+   pip install -r requirements.txt
+
+2. 运行实验一（LDA）
+   python olda_perplexity_analysis.py
+   结果：olda_perplexity_analysis.png
+
+3. 运行实验二（聚类对比）
+   python text_clustering_comparison.py
+   结果：clustering_comparison.png
+
+4. 查看完整文档
+   打开 README.md
+
+================================================================================
+
+实验结果摘要：
+
+【实验一：LDA主题模型】
+✓ 最优主题数：4个主题
+✓ 最低困惑度：5322.08
+✓ 最佳性能：e^(-log(Perplexity)) = 0.000188
+✓ 平均训练时间：8.6秒/模型
+
+【实验二：聚类算法对比】
+✓ 推荐算法：KMeans (K=3)
+✓ 轮廓系数：0.8626 (优秀)
+✓ Calinski-Harabasz指数：1224.22
+✓ Davies-Bouldin指数：0.2485 (越小越好)
+✓ 训练时间：0.15秒
+✓ KMeans全面优于Single-pass
+
+【数据统计】
+- 文档数量：5,219篇
+- 词汇表大小：60,415个词
+- 矩阵稀疏度：99.84%
+- 主题：日本台湾相关新闻
+
+================================================================================
+
+技术特点：
+
+✓ 稀疏矩阵优化（节省99.84%内存）
+✓ 在线学习算法（适合大规模数据）
+✓ SVD降维（保留73.42%方差）
+✓ 多维度评估指标（轮廓系数、CH指数、DB指数）
+✓ 自动化可视化（9宫格对比图）
+✓ 完整的实验报告生成
+
+================================================================================
+
+下一步建议：
+
+1. 深入分析各聚类的代表性文档
+2. 提取各主题的关键词
+3. 使用t-SNE进行2D可视化
+4. 结合时间序列分析主题演变
+5. 尝试BERT等深度学习方法
+
+详见 README.md 的"结论与建议"章节
+
+================================================================================
+
+联系与支持：
+- 技术文档：README.md
+- 项目结构：PROJECT_STRUCTURE.txt（本文件）
+- 配置文件：requirements.txt
+
+版本：v1.0
+日期：2025-12-19
