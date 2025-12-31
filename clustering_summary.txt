@@ -13,7 +13,7 @@
    - Calinski-Harabasz指数: 1224.22
    - Davies-Bouldin指数: 0.2485
    - 惯性: 1569153.25
-   - 训练时间: 0.15秒
+   - 训练时间: 1.01秒
 
 3. Single-pass 最佳结果
    - 阈值: 0.7
@@ -21,7 +21,7 @@
    - 轮廓系数: -0.2147
    - Calinski-Harabasz指数: 13.18
    - Davies-Bouldin指数: 1.6715
-   - 训练时间: 7.69秒
+   - 训练时间: 50.98秒
 
 4. 结论
    推荐算法: KMeans
